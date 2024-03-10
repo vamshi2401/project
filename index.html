@@ -55,21 +55,34 @@
         <form action="/predict" method="post" enctype="multipart/form-data">
             <div class="file-container">
                 <input type="file" name="file" id="file" class="file-input" accept=".csv">
-                <label for="file" class="file-label">Choose File</label>
-                <span class"file-name">(No file selected)</span>
+                <label for="file" class="file-label" id="file-label">Choose File</label>
+                <span class="file-name">(No file selected)</span>
             </div>
-            <button type="submit" class="file-label" style="margin: 0;">Upload</button>
+            <button type="submit" class="file-label" id="upload-btn" style="margin: 0;">Upload</button>
         </form>
 
-        <div id="result">
-            {% if predictions %}
-                <p>Predictions: {{ predictions }}</p>
-            {% endif %}
-            {% if error %}
-                <p>Error: {{ error }}</p>
-            {% endif %}
-        </div>
-        
+        <div id="result"></div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('file').addEventListener('change', function () {
+                const fileName = this.files[0].name;
+                document.querySelector('.file-name').textContent = fileName;
+            });
+
+            document.getElementById('upload-btn').addEventListener('click', function () {
+                const predictions = getPredictions(); // You should implement this function to get predictions
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = ''; // Clear previous content
+                if (predictions) {
+                    const p = document.createElement('p');
+                    p.textContent = 'Predictions: ' + predictions;
+                    resultDiv.appendChild(p);
+                }
+                // You can add more logic to handle errors if necessary
+            });
+        });
+    </script>
 </body>
 </html>
