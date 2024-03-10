@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV File Upload</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        .file-container {
+            margin: 10px 0; /* Spacing around the custom file input */
+        }
+        input[type="file"] {
+            display: none; /* Hide the default file input */
+        }
+        .file-label {
+            display: block; /* Make the label behave like a block element */
+            width: 100%; /* Full width */
+            background-color: #28a745;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .file-label:hover {
+            background-color: #218838;
+        }
+        #result {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload CSV File for Prediction</h2>
+        <form action="/predict" method="post" enctype="multipart/form-data">
+            <div class="file-container">
+                <input type="file" name="file" id="file" class="file-input" accept=".csv">
+                <label for="file" class="file-label">Choose File</label>
+                <span class"file-name">(No file selected)</span>
+            </div>
+            <button type="submit" class="file-label" style="margin: 0;">Upload</button>
+        </form>
+
+        <div id="result">
+            {% if predictions %}
+                <p>Predictions: {{ predictions }}</p>
+            {% endif %}
+            {% if error %}
+                <p>Error: {{ error }}</p>
+            {% endif %}
+        </div>
+        
+    </div>
+</body>
+</html>
