@@ -25,14 +25,14 @@
             text-align: center;
         }
         .file-container {
-            margin: 10px 0; /* Spacing around the custom file input */
+            margin: 10px 0; 
         }
         input[type="file"] {
-            display: none; /* Hide the default file input */
+            display: none;
         }
         .file-label {
-            display: block; /* Make the label behave like a block element */
-            width: 100%; /* Full width */
+            display: block; 
+            width: 100%;
             background-color: #28a745;
             color: #fff;
             padding: 10px;
@@ -72,15 +72,15 @@
             });
 
             document.getElementById('upload-btn').addEventListener('click', function () {
-                const predictions = getPredictions(); // You should implement this function to get predictions
+                const predictions = getPredictions(); 
                 const resultDiv = document.getElementById('result');
-                resultDiv.innerHTML = ''; // Clear previous content
+                resultDiv.innerHTML = ''; 
                 if (predictions) {
                     const p = document.createElement('p');
                     p.textContent = 'Predictions: ' + predictions;
                     resultDiv.appendChild(p);
                 }
-                // You can add more logic to handle errors if necessary
+               
             });
         });
     </script>
