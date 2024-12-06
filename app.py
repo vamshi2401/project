@@ -10,7 +10,6 @@ def index():
     return render_template('index.html')
 
 
-
 def predict_from_csv(csv_file):
     # Load the trained model
     model = pickle.load(open('model_1.pickle', 'rb'))
