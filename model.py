@@ -15,7 +15,6 @@ y=df.iloc[:,-1]
 y
 
 
-
 smote = SMOTE(random_state=42)
 X_resampled1, y_resampled1 = smote.fit_resample(x1, y)
 print("Class distribution before resampling:")
